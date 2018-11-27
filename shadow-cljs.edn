@@ -1,0 +1,11 @@
+{:source-paths ["src/dev"
+                "src/main"
+                "src/test"]
+ :dependencies [[reagent "0.8.2-SNAPSHOT"]
+                [re-frame "0.10.6"]]
+ :builds {:wireframe {:target :browser
+                      :modules {:main {:init-fn wireframe.app/init}}
+                      :devtools {:http-root "public"
+                                 :http-port 8080}
+                      :compiler-options {:closure-warnings {:global-this :off}
+                                         :optimizations :advanced}}}}
