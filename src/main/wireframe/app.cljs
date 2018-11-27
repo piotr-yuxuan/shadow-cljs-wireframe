@@ -3,7 +3,7 @@
             ["@material-ui/core" :as mui]
             ["@material-ui/core/styles" :refer [createMuiTheme]]
             ["@material-ui/core/colors" :as mui-colors]
-            ["@material-ui/icons/Android" :refer [AndroidIcon]]))
+            ["@material-ui/icons"]))
 
 (defn custom-theme
   []
@@ -20,5 +20,5 @@
                     [:> mui/CssBaseline]
                     [:h1 "This is my first, simple heading"]
                     [:> mui/Avatar
-                     [:> AndroidIcon {:color :secondary}]]]]
+                     [:> (.. js/MaterialUI -icons -AndroidIcon) {:color :secondary}]]]]
                   (.getElementById js/document "app")))
