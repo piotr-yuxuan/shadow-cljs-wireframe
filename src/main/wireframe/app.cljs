@@ -1,9 +1,11 @@
 (ns wireframe.app
   (:require [reagent.core :as reagent]
-            ["@material-ui/core" :as mui]
+            ["@material-ui/core/styles/MuiThemeProvider" :default mui-ThemeProvider]
             ["@material-ui/core/styles" :refer [createMuiTheme]]
             ["@material-ui/core/colors" :as mui-colors]
-            ["@material-ui/icons"]))
+            ["@material-ui/core/CssBaseline" :default mui-CssBaseline]
+            ["@material-ui/core/Avatar" :default mui-avatar]
+            ["@material-ui/icons/Android" :default AndroidIcon]))
 
 (defn custom-theme
   []
@@ -14,11 +16,11 @@
 
 (defn init []
   (println "Hello World from shadow-cljs")
-  (reagent/render [:> mui/MuiThemeProvider
+  (reagent/render [:> mui-ThemeProvider
                    {:theme (custom-theme)}
                    [:<>
-                    [:> mui/CssBaseline]
+                    [:> mui-CssBaseline]
                     [:h1 "This is my first, simple heading"]
-                    [:> mui/Avatar
-                     [:> (.. js/MaterialUI -icons -AndroidIcon) {:color :secondary}]]]]
+                    [:> mui-avatar
+                     [:> AndroidIcon {:color :secondary}]]]]
                   (.getElementById js/document "app")))
